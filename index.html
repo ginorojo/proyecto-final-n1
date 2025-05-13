@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/styles/output.css" />
+    <script src="./src/scripts/main.js" type="module" defer></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>PF Windbnd Vanilla</title>
+  </head>
+  <body>
+    <header class="pb-10 pt-2">
+      <div class="pb-2.5 pl-7" >
+        <img src="./src/images/icons/logo-f7862584.svg" alt="" />
+      </div>
+      <div class="flex justify-center item md:justify-end md:pr-[52px]">
+        <input id="location" class="btnModal text-[10px] text-center flex w-32 h-10  rounded-l-lg shadow-sm/30" type="text" placeholder="Add location" >
+        <input class="btnModal shadow-sm/30 text-[10px] text-center w-32  h-10" type="text" placeholder="Add guest">
+        <button class="cursor-pointer shadow-sm/30 rounded-r-lg w-12 flex justify-center">
+          <svg class="w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke= "#eb5757" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <section>
+      <div class="modalPadre bg-white fixed inset-0 hidden h-[90%] " >
+        <div class="relative">
+          <div class="flex justify-between p-8 items-center">
+            <p class="text-[12px] font-semibold">Edit your search</p>
+            <button id="closeModal" class="font-bold text-[20px]">X</button>
+          </div>
+          <div >
+            <div class="md:flex-row flex flex-col justify-center items-center">
+              <div class="shadow-sm/30 w-80 h-15 rounded-t-lg">
+              <label class="p-[10px] text-[12px]" for="">location</label>
+              <input id="inputCiudad" class="px-[10px] border-none outline-none text-[10px] flex w-80 h-8" type="text"  >
+              <ul id="sugerenciasCiudad" class="bg-white border rounded mt-1 hidden absolute z-10"></ul>  
+            </div>
+            <div class="shadow-sm/30 w-80 h-15 rounded-b-lg">
+              <label class="p-[10px] text-[12px]" for="">Guests</label>
+              <br>
+              <span class="px-[10px] border-none outline-none text-[15px] flex w-80 h-8 totalguest "></span>  
+            </div>
+          </div>
+            
+            <div class="flex flex-col items-start w-full md:items-center ">
+                <div class="gap-2.5 flex flex-col items-start justify-start p-[30px] md:ml-[150px]">
+                  <p class="font-semibold">Adults</p>
+                  <p class="text-[14px]">Ages 13 or above</p>
+                <div class="flex gap-4">
+                  <button class="border w-[20px] h-[20px] flex justify-center items-center btn-menosa"> - </button>
+                  <button class="cantidadAdultos">0</button>
+                  <button class="border w-[20px] h-[20px] flex justify-center items-center btn-masa"> + </button>
+                </div>
+              
+                <div class="gap-2.5 flex flex-col items-start justify-start ">
+                  <p class="font-semibold">Children</p>
+                  <p class="text-[14px]">Ages 13 or above</p>
+                <div class="flex gap-4">
+                  <button class="border w-[20px] h-[20px] flex justify-center items-center btn-menosn">-</button>
+                  <button class="cantidadniños">0</button>
+                  <button class="border w-[20px] h-[20px] flex justify-center items-center btn-masn">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-center items-center w-full pt-[20px] ">
+                <button class="font-semibold text-white bg-[#eb5757] gap-1 border rounded-3xl w-[150px] h-[50px] flex items-center justify-center">
+                  <img class="w-5" src="./src/images/icons/search.svg" alt="">
+                  <p>Search</p>
+                </button>
+            </div>
+          </div>        
+        </div>
+      </div>
+    </section>
+    <section class="pb-5 items-center flex justify-between px-[30px] md:px-[50px]">
+      <p class="font-bold text-[20px]">Stays in Finland</p>
+      <P class="text-[12px]">12 + stays</P>
+    </section>
+    <main>
+      <section id="alojamientos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  place-items-center">
+        
+                
+      </section>
+    </main>
+  </body>
+</html>
+
+<!-- npx @tailwindcss/cli -i ./src/styles/input.css -o ./src/styles/output.css --watch -->
+
