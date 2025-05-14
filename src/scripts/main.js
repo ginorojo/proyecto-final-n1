@@ -21,18 +21,24 @@ const btnModal=document.querySelectorAll(".btnModal")
 const btnCerrarModal=document.querySelector("#closeModal")
 const modalPadre= document.querySelector(".modalPadre")
 
-btnModal.forEach((element)=>{
-  element.addEventListener("click", function(){
-  modalPadre.classList.remove("hidden")
-  btnModal.classList.remove("block")
-  btnModal.classList.add("hidden")
+let botonOculto = null;
 
-})
-})
+btnModal.forEach((element) => {
+  element.addEventListener("click", function () {
+    modalPadre.classList.remove("hidden");
+    element.classList.add("hidden");
+    botonOculto = element; 
+  });
+});
 
-btnCerrarModal.addEventListener("click", function(){
-  modalPadre.classList.add("hidden")
-})
+btnCerrarModal.addEventListener("click", function () {
+  modalPadre.classList.add("hidden");
+  if (botonOculto) {
+    botonOculto.classList.remove("hidden");
+    botonOculto = null; 
+  }
+});
+
 
 adultosCantidad()
 
