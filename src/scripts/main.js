@@ -24,6 +24,8 @@ const modalPadre= document.querySelector(".modalPadre")
 btnModal.forEach((element)=>{
   element.addEventListener("click", function(){
   modalPadre.classList.remove("hidden")
+  btnModal.classList.remove("block")
+  btnModal.classList.add("hidden")
 
 })
 })
@@ -37,4 +39,7 @@ adultosCantidad()
 niñosCantidad()
 
 total()
+
+
+
 
