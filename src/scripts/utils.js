@@ -4,11 +4,14 @@
  * desde el archivo principal para realizar varias operaciones.
  */
 
+
+//funcion para implementar skeleton
+
 export default function traerSkeleton(contenedor, stays) {
   contenedor.innerHTML = "";
   for (let i = 0; i < stays.length; i++) {
     contenedor.innerHTML += `
-    <a href="#" class=" block w-[337px] h-[223.26px] bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <a href="#" class="mb-[50px] block w-[337px] h-[223.26px] bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
     <div role="status" class="w-[337px] h-[223.26px]animate-pulse">
     <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
     <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
@@ -22,6 +25,9 @@ export default function traerSkeleton(contenedor, stays) {
     `;
   }
 }
+
+
+//mostrar todos los alojamientos
 
 export function Alojamientos(listastays, contenedor){
    listastays.forEach(element => {
@@ -74,9 +80,6 @@ export function Alojamientos(listastays, contenedor){
     });
 }
 
-// Alojamientos(stays)
-
-
 
 // botones cantidad
   let cantidadAdul=0
@@ -112,10 +115,6 @@ export function adultosCantidad(cantidad){
   })
 }
 
-
-
-
-
 export function niñosCantidad (numero){
 
 const btnmasniño=document.querySelector(".btn-masn")
@@ -143,3 +142,41 @@ const btnmenosniño=document.querySelector(".btn-menosn")
 
 }
 
+
+//funcion para autocompletado
+
+export function autocompletado(locationCity, ciudades, suggestions) {
+  locationCity.addEventListener("input", () => {
+    const texto = locationCity.value.toLowerCase().trim();
+    suggestions.innerHTML = "";
+
+    if (texto === "") return; // Si no hay texto, no se muestran sugerencias
+
+    const resultados = ciudades.filter(ciudad =>
+      ciudad.toLowerCase().includes(texto)
+    );
+
+    resultados.forEach(ciudad => {
+      const li = document.createElement("li");
+
+      li.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="inline w-4 h-4 mr-2 text-red-500" 
+             viewBox="0 0 24 24" 
+             fill="currentColor">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z"/>
+        </svg>
+        ${ciudad}, Finland
+      `;
+
+      li.classList.add("cursor-pointer", "p-2", "hover:bg-gray-200", "flex", "items-center", "gap-2", "rounded","absolute","bg-white" );
+
+      li.addEventListener("click", () => {
+        locationCity.value = ciudad;
+        suggestions.innerHTML = ""; // Oculta las sugerencias
+      });
+
+      suggestions.appendChild(li);
+    });
+  });
+}
